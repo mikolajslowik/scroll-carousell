@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Tile from "./components/Tile";
@@ -18,8 +17,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  const wrapper: any = document.getElementsByClassName("wrapper");
-  const prevBtn: any = document.getElementsByClassName("prevBtn");
   const ul: any = document.getElementById("scrollContainer");
   const li: any = document.querySelector("li");
 
@@ -28,10 +25,7 @@ function App() {
   };
 
   const prevProdHandler = () => {
-    if (ul?.scrollLeft <= 5) {
-      prevBtn.style.opacity = "0";
-      ul?.scrollBy(2 * -Number(li?.offsetWidth), 0);
-    }
+    ul?.scrollBy(2 * -Number(li?.offsetWidth), 0);
   };
   return (
     <div className="App">
@@ -47,15 +41,7 @@ function App() {
             </li>
           ))}{" "}
         </ul>
-        <button
-          className="btn nextBtn"
-          // style={
-          //   ul?.offsetWidth + ul?.scrollTop >= ul?.scrollLeft
-          //     ? { opacity: "0" }
-          //     : { opacity: "1" }
-          // }
-          onClick={nextProdHandler}
-        >
+        <button className="btn nextBtn" onClick={nextProdHandler}>
           &#62;
         </button>
       </div>
